@@ -1,8 +1,13 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+
 const app = express();
 
-const misRutas = require('./routes/logic.routes');
-app.use('/rutas', misRutas);
+
+app.use(bodyParser.urlencoded({extended: false}));
+
+const misRutas = require('./routes/aboutme.routes.js');
+app.use('/aboutme', misRutas);
 
 //Middleware
 app.use((request, response, next) => {
