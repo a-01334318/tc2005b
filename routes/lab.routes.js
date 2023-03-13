@@ -3,9 +3,10 @@ const path = require('path');
 const router = express.Router();
 const controller = require('../controllers/lab.controller')
 
-router.get('/', lab.get_index);
-router.get('/contact', lab.get_contact);
-router.get('/contact', lab.post_contact);
-router.get('/list', lab.get_contacts);
+router.get('/', controller.get_index);
+router.get('/contact', controller.get_contact);
+router.get('/contact', controller.post_contact);
+router.get('/list', controller.get_list);
+router.get('/faq', controller.get_faq);
 
 module.exports = router;

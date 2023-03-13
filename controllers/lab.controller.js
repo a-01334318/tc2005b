@@ -1,5 +1,5 @@
 const { response } = require('express');
-const Contact = require('../models/lab.model');
+const Contact = require('../models/contacts.model');
 
 exports.get_index = (request, response, next) => {
     response.render('index');
@@ -22,4 +22,8 @@ exports.get_list = (request, response, next) => {
     response.render('list', {
         contacts: Contact.fectchAll(),
     });
+};
+
+exports.get_faq = (request, response, next) => {
+    response.render('faq');
 };
