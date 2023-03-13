@@ -15,8 +15,8 @@ app.use((request, response, next) => {
     next(); // Le permite a la petición avanzar hacia el siguiente middleware
 });
 
-const misRutas = require('./routes/misrutas.routes.js');
-app.use('/', misRutas);
+const myRoutes = require('./routes/lab.routes.js');
+app.use('/', myRoutes);
 
 app.use((request, response, next) => {
     response.status(404);
