@@ -15,6 +15,8 @@ exports.post_contact = (request, response, next) => {
         id: request.body.inputId,
     });
     newContact.save();
+    // Utilizar variable de sesión en controlador
+    request.session.lastContact = newContact.name;
     response.status(300).redirect('list');
 };
 
@@ -31,6 +33,8 @@ exports.get_list = (request, response, next) => {
 
     response.render('list', {
         contacts: Contact.fetchAll(),
+        // Recuperar variable de sesión
+        lastContact: request.session.lastContact || '',
     });
 };
 
