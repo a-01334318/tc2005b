@@ -1,24 +1,18 @@
 const express = require('express');
+const path = require('path');
 
 const router = express.Router();
 
 router.get('/', (request, response, next) => {
-
-    let aboutme = `
-        <!DOCTYPE html>
-        <html>
-            <head>
-                <meta charset="utf-8">
-            </head>
-            <body>
-                <h1>About me</h1>
-                    <p>Hola! Soy Erik y estudio ITC</p>
-            </body>
-        </html>
-    `;
-
-    response.send(aboutme);
+    response.render('index');
 });
 
+router.get('/contact', (request, response, next) => {
+    response.render('contact');
+});
+
+router.get('/faq', (request, response, next) => {
+    response.render('faq');
+});
 
 module.exports = router;

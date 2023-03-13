@@ -11,9 +11,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser.urlencoded({extended: false}));
 
-const misRutas = require('./routes/aboutme.routes.js');
-app.use('/aboutme', misRutas);
-
 //Middleware
 app.use((request, response, next) => {
     console.log('Middleware!');
@@ -24,14 +21,13 @@ app.use('/home', (request, response, next) => {
     response.send('Bienvenido a casa!'); 
 });
 
-app.use((request, response, next) => {
-    console.log('Otro middleware!');
-    response.send('¡Hola mundo!'); //Manda la respuesta
-});
+const misRutas = require('./routes/aboutme.routes.js');
 
-app.use((req, res, next) => {
-    res.status(404);
-    res.send("404 - Page not found");
+app.use('/aboutme', misRutas);
+
+app.use((request, response, next) => {
+    response.status(404);
+    response.send("404 - Page not found");
 });
 
 app.listen(3000);
