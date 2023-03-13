@@ -1,7 +1,26 @@
-<ul class="list-group">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Morbi leo risus</li>
-    <li class="list-group-item">Porta ac consectetur ac</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-  </ul>
+<%- include('includes/head.ejs') %>
+
+<h1 class="title">Contactos</h1>
+
+<% if (contacts.length > 0) { %>
+    <% for (let contact of contacts) { %>
+        <div class="container">
+            <div class="row">
+              <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Contacto">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= contact.name %></h5>
+                      <p class="card-text"><%= contact.id %></p>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+    <% } %>
+ <% } else { %>
+    <p>No hay contactos registrados</p> 
+<% } %>
+
+  <%- include('includes/foot.ejs') %>

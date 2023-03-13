@@ -11,16 +11,16 @@ exports.get_contact = (request, response, next) => {
 
 exports.post_contact = (request, response, next) => {
     const newContact = new Contact({
-        name: request.body.name,
-        id: request.body.id,
+        name: request.body.inputName,
+        id: request.body.inputId,
     });
     newContact.save();
-    response.status(300).redirect('/list');
+    response.status(300).redirect('list');
 };
 
 exports.get_list = (request, response, next) => {
     response.render('list', {
-        contacts: Contact.fectchAll(),
+        contacts: Contact.fetchAll(),
     });
 };
 
