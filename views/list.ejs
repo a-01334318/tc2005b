@@ -2,6 +2,7 @@
 
     <main>
         <h1 class="title">Contactos</h1>
+        <br><br>
         <div class="container">
             <div class="row row-cols-3">
         <% if (contacts.length > 0) { %>
@@ -22,7 +23,6 @@
             <p>No hay contactos registrados</p> 
         <% } %>
         <br><br>
-
         <% if (lastContact != '') { %>
             <div class="alert alert-primary" role="alert">
                 El último contacto registrado fue: <%= lastContact %>
