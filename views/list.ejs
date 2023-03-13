@@ -1,25 +1,38 @@
 <%- include('includes/head.ejs') %>
 
-<h1 class="title">Contactos</h1>
-
-<% if (contacts.length > 0) { %>
-    <% for (let contact of contacts) { %>
-        <div class="container">
-            <div class="row">
-                <div class="col-3">
-                    <div class="card" style="width: 8rem;">
-                        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Contacto">
-                        <div class="card-body">
-                            <h5 class="card-title"><%= contact.name %></h5>
-                            <p class="card-text"><%= contact.id %></p>
+    <main>
+        <h1 class="title">Contactos</h1>
+        <% if (contacts.length > 0) { %>
+            <% for (let contact of contacts) { %>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="card" style="width: 8rem;">
+                                <img class="card-img-top" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Contacto">
+                                <div class="card-body">
+                                    <h5 class="card-title"><%= contact.name %></h5>
+                                    <p class="card-text"><%= contact.id %></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    <% } %>
- <% } else { %>
-    <p>No hay contactos registrados</p> 
-<% } %>
+            <% } %>
+        <% } else { %>
+            <p>No hay contactos registrados</p> 
+        <% } %>
+        <br><br>
 
-  <%- include('includes/foot.ejs') %>
+        <% if (ultimo_hot_cake != '') { %>
+            <div class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                  <div class="toast-body">
+                  El último contacto registrado fue: <%= lastContact %>
+                 </div>
+                  <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+              </div>
+        <% } %>
+    </main>
+
+<%- include('includes/foot.ejs') %>
