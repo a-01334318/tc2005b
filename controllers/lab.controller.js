@@ -19,6 +19,16 @@ exports.post_contact = (request, response, next) => {
 };
 
 exports.get_list = (request, response, next) => {
+
+    const cookies = request.get('Cookie') || '';
+
+    let queries = cookies.split('=')[1] || 0;
+
+    queries++;
+
+    //Crear una cookie
+    response.setHeader('Set-Cookie', 'consultas=' + queries + '; HttpOnly');
+
     response.render('list', {
         contacts: Contact.fetchAll(),
     });
