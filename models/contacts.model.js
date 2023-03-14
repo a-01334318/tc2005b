@@ -1,11 +1,12 @@
 const db = require('../util/database');
 
-const contacts = [
+/*const contacts = [
 {
     name: 'Erik',
     enrollment_id: 'a01334318',
 }
 ];
+*/
 
 module.exports = class Contact {
     constructor(newContact) {
@@ -16,7 +17,7 @@ module.exports = class Contact {
     //Este método servirá para guardar de manera persistente el nuevo objeto. 
     save() {
         return db.execute(
-            `INSERT INTO contacts(name, enrollment_id) 
+            `INSERT INTO contacts(name, enrollment_id)
             VALUES(?, ?)`,
             [this.name, this.enrollment_id]
         );   
@@ -24,9 +25,9 @@ module.exports = class Contact {
     
     //Este método servirá para devolver los objetos del almacenamiento persistente.
     static fetch(id) {
-        let query = 'SELECT * FROM contacts';
+        let query = `SELECT * FROM contacts`;
         if (id != 0) {
-            query += ' WHERE enrrolment_id = ?';
+            query += ' WHERE enrrolment_id = ?'
             return db.execute(query, [id]);
         }
     return db.execute(query);
