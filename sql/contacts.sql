@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:8889
--- Tiempo de generación: 14-03-2023 a las 16:21:10
+-- Tiempo de generación: 14-03-2023 a las 16:39:12
 -- Versión del servidor: 5.7.39
 -- Versión de PHP: 7.4.33
 
@@ -24,13 +24,13 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `users`
+-- Estructura de tabla para la tabla `contacts`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE `contacts` (
   `id` int(11) NOT NULL,
-  `username` varchar(40) NOT NULL,
-  `password` varchar(400) NOT NULL,
+  `name` varchar(80) NOT NULL,
+  `enrollment_id` varchar(20) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -39,20 +39,20 @@ CREATE TABLE `users` (
 --
 
 --
--- Indices de la tabla `users`
+-- Indices de la tabla `contacts`
 --
-ALTER TABLE `users`
+ALTER TABLE `contacts`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`);
+  ADD UNIQUE KEY `enrollment_id` (`enrollment_id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `users`
+-- AUTO_INCREMENT de la tabla `contacts`
 --
-ALTER TABLE `users`
+ALTER TABLE `contacts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 

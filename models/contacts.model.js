@@ -1,3 +1,5 @@
+const db = require('../util/database');
+
 const contacts = [
 {
     name: 'Erik',
@@ -16,7 +18,7 @@ module.exports = class Contact {
     }
 
     static fetchAll() {
-        return contacts;
+        return db.execute('SELECT * FROM contacts');;
     }
 }
 

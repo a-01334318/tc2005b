@@ -31,10 +31,18 @@ exports.get_list = (request, response, next) => {
     //Crear una cookie
     response.setHeader('Set-Cookie', 'consultas=' + queries + '; HttpOnly');
 
-    response.render('list', {
-        contacts: Contact.fetchAll(),
-        // Recuperar variable de sesión
-        lastContact: request.session.lastContact || '',
+    Contact.fetchAll()
+    .then(([rows, fieldData]) => {
+        console.log(rows);
+        //console.log(fieldData);
+        
+        response.render('list', { 
+            contacts: rows,
+            lastContact: request.session.lastContact || '',
+        });
+    })
+    .catch(error => {
+        console.log(error);
     });
 };
 
