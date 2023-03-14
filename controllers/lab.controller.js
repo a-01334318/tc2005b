@@ -35,35 +35,19 @@ exports.get_list = (request, response, next) => {
 
     const id = request.params.id || 0;
 
-    if (id != 0) {
-        Contact.fetchOne(id)
-        .then(([rows, fieldData]) => {
-            console.log(rows);
-            //console.log(fieldData);
+    Contact.fetchOne(id)
+    .then(([rows, fieldData]) => {
+        console.log(rows);
+        //console.log(fieldData);
             
-            response.render('list', { 
-                contacts: rows,
-                lastContact: request.session.lastContact || '',
-            });
-        })
-        .catch(error => {
-            console.log(error);
+        response.render('list', { 
+            contacts: rows,
+            lastContact: request.session.lastContact || '',
         });
-    } else {
-        Contact.fetchAll()
-        .then(([rows, fieldData]) => {
-            console.log(rows);
-            //console.log(fieldData);
-            
-            response.render('list', { 
-                contacts: rows,
-                lastContact: request.session.lastContact || '',
-            });
-        })
-        .catch(error => {
-            console.log(error);
-        });
-    }
+    })
+    .catch(error => {
+        console.log(error);
+    });
 };
 
 exports.get_faq = (request, response, next) => {

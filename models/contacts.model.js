@@ -23,15 +23,13 @@ module.exports = class Contact {
     }
     
     //Este método servirá para devolver los objetos del almacenamiento persistente.
-    static fetchAll() {
-        return db.execute('SELECT * FROM contacts');;
-    }
-
-    //Este método servirá para devolver un objeto con id específico. 
-    static fetchOne(id) {
-        return db.execute(
-            `SELECT * FROM contacts WHERE id = ?`, [id]
-        );
+    static fetch(id) {
+        let query = 'SELECT * FROM contacts';
+        if (id != 0) {
+            query += ' WHERE id = ?';
+            return db.execute(query, [id]);
+        }
+    return db.execute(query);
     }
 }
 
