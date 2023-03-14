@@ -26,5 +26,12 @@ module.exports = class Contact {
     static fetchAll() {
         return db.execute('SELECT * FROM contacts');;
     }
+
+    //Este método servirá para devolver un objeto con id específico. 
+    static fetchOne(id) {
+        return db.execute(
+            `SELECT * FROM contacts WHERE id = ?`, [id]
+        );
+    }
 }
 
