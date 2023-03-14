@@ -26,7 +26,7 @@ module.exports = class Contact {
     static fetch(id) {
         let query = 'SELECT * FROM contacts';
         if (id != 0) {
-            query += ' WHERE id = ?';
+            query += ' WHERE enrrolment_id = ?';
             return db.execute(query, [id]);
         }
     return db.execute(query);
