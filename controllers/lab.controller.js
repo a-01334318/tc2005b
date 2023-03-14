@@ -14,10 +14,12 @@ exports.post_contact = (request, response, next) => {
         name: request.body.inputName,
         id: request.body.inputId,
     });
-    newContact.save();
-    // Utilizar variable de sesión en controlador
-    request.session.lastContact = newContact.name;
-    response.status(300).redirect('list');
+    newContact.save()
+    .then(([rows, fieldData]) => {
+        request.session.lastContact = newContact.name;
+        response.status(300).redirect('list');
+    })
+    .catch(error => console.log(error));
 };
 
 exports.get_list = (request, response, next) => {
