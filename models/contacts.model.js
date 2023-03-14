@@ -13,10 +13,16 @@ module.exports = class Contact {
         this.id = newContact.id || 'a0'
     }
 
+    //Este método servirá para guardar de manera persistente el nuevo objeto. 
     save() {
-        contacts.push(this);
+        return db.execute(
+            `INSERT INTO contacts(name, enrollment_id) 
+            VALUES(?, ?)`,
+            [this.name, this.id]
+        );   
     }
-
+    
+    //Este método servirá para devolver los objetos del almacenamiento persistente.
     static fetchAll() {
         return db.execute('SELECT * FROM contacts');;
     }
