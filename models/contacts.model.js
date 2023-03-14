@@ -3,14 +3,14 @@ const db = require('../util/database');
 const contacts = [
 {
     name: 'Erik',
-    id: 'a01334318',
+    enrollment_id: 'a01334318',
 }
 ];
 
 module.exports = class Contact {
     constructor(newContact) {
         this.name = newContact.name || 'Anonymous';
-        this.id = newContact.id || 'a0'
+        this.enrollment_id = newContact.enrollment_id || 'a'
     }
 
     //Este método servirá para guardar de manera persistente el nuevo objeto. 
@@ -18,7 +18,7 @@ module.exports = class Contact {
         return db.execute(
             `INSERT INTO contacts(name, enrollment_id) 
             VALUES(?, ?)`,
-            [this.name, this.id]
+            [this.name, this.enrollment_id]
         );   
     }
     

@@ -12,7 +12,7 @@ exports.get_contact = (request, response, next) => {
 exports.post_contact = (request, response, next) => {
     const newContact = new Contact({
         name: request.body.inputName,
-        id: request.body.inputId,
+        enrollment_id: request.body.inputId,
     });
     newContact.save()
     .then(([rows, fieldData]) => {
@@ -35,7 +35,7 @@ exports.get_list = (request, response, next) => {
 
     const id = request.params.id || 0;
 
-    Contact.fetchOne(id)
+    Contact.fetch(id)
     .then(([rows, fieldData]) => {
         console.log(rows);
         //console.log(fieldData);
