@@ -9,6 +9,7 @@ exports.get_contact = (request, response, next) => {
     response.render('contact', {
         isLoggedIn: request.session.isLoggedIn || false,
         username: request.session.username || '',
+        csrfToken: request.csrfToken(),
     });
 };
 

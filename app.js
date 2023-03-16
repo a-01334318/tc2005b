@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const session = require('express-session');
+const csrf = require('csurf');
 const isAuth = require('./util/is-auth');
 
 const app = express();
@@ -18,6 +19,10 @@ app.use(session({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser.urlencoded({extended: false}));
+
+// Middleware para proteger las rutas
+const csrfProtection = csrf();
+app.use(csrfProtection); 
 
 app.use((request, response, next) => {
     next(); // Le permite a la petición avanzar hacia el siguiente middleware
