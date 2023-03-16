@@ -21,8 +21,23 @@ exports.post_signup = (request, response, next) => {
     .catch((error) => console.log(error));
 };
 
+exports.get_login = (request, response, next) => {
+
+    let alert = '';
+
+    if (request.session.alert != '') {
+        alert = request.session.alert;
+        request.session.alert = '';
+    }
+
+    response.render('login', {
+        alert: alert,
+    });
+};
+
+
 exports.logout = (request, response, next) => {
     request.session.destroy(() => {
-        response.redirect('/'); //Este código se ejecuta cuando la sesión se elimina.
+        response.redirect('/login'); //Este código se ejecuta cuando la sesión se elimina.
     });
 };
