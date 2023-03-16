@@ -55,13 +55,13 @@ exports.post_login = (request, response, next) => {
                     response.redirect('/list');
                 } else {
                     request.session.alert = 'El usuario y/o contraseña no coinciden';
-                    response.redirect('/login');
+                    response.redirect('/users/login');
                 }
             })
             .catch((error) => {console.log(error)});
         } else {
             request.session.alert = 'El usuario y/o contraseña no coinciden';
-            response.redirect('/login');
+            response.redirect('/users/login');
         }
     })
     .catch((error) => {console.log(error)});
@@ -69,6 +69,6 @@ exports.post_login = (request, response, next) => {
 
 exports.logout = (request, response, next) => {
     request.session.destroy(() => {
-        response.redirect('/login'); //Este código se ejecuta cuando la sesión se elimina.
+        response.redirect('/users/login'); //Este código se ejecuta cuando la sesión se elimina.
     });
 };

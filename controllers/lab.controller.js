@@ -2,7 +2,11 @@ const { response } = require('express');
 const Contact = require('../models/contacts.model');
 
 exports.get_index = (request, response, next) => {
-    response.render('index');
+    response.render('index', {
+        isLoggedIn: request.session.isLoggedIn || false,
+        username: request.session.username || '',
+    });
+    
 };
 
 exports.get_contact = (request, response, next) => {
@@ -57,5 +61,9 @@ exports.get_list = (request, response, next) => {
 };
 
 exports.get_faq = (request, response, next) => {
-    response.render('faq');
+    response.render('faq', {
+        isLoggedIn: request.session.isLoggedIn || false,
+        username: request.session.username || '',
+        csrfToken: request.csrfToken(),
+    });
 };
