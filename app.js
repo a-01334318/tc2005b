@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const session = require('express-session');
+const isAuth = require('./util/is-auth');
 
 const app = express();
 
@@ -27,6 +28,8 @@ app.use('/users', usersRoutes);
 
 const myRoutes = require('./routes/lab.routes.js');
 app.use('/', myRoutes);
+// Para proteger una ruta, se puede usar el middleware isAuth
+app.use('/list', isAuth, myRoutes);
 
 app.use((request, response, next) => {
     response.status(404);
