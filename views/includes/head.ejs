@@ -77,12 +77,12 @@
                   <a class="nav-link fw-bold py-1 px-0" href="/contact">Contacto</a>
                   <a class="nav-link fw-bold py-1 px-0" href="/faq">FAQ</a>
                   <% if(!isLoggedIn) { %> 
-                    <a class="btn btn-primary" href="/signup" role="button">Registrarse</a>
-                    <a class="btn btn-success" href="/login" role="button">Entrar</a>
+                    <a class="btn btn-primary" href="/users/ignup" role="button">Registrarse</a>
+                    <a class="btn btn-success" href="/users/login" role="button">Entrar</a>
                   <% } %>
                   <% if(isLoggedIn) { %> 
                     <span class="navbar-item">Hola <%= nombre %>  | </span>
-                    <a class="btn btn-danger" href="/logout" role="button">Salir</a>
+                    <a class="btn btn-danger" href="/users/logout" role="button">Salir</a>
                   <% } %>
                 </nav>
               </div>
