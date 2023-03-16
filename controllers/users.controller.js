@@ -35,6 +35,20 @@ exports.get_login = (request, response, next) => {
     });
 };
 
+exports.post_login = (request, response, next) => {
+    User.fetchOne(request.body.inputUsername)
+    .then(([rows, fieldData]) => {
+        if (rows.length > 0) {
+
+        } else {
+            request.session.alert = 'El usuario y/o contraseña no coinciden';
+            response.redirect('/login');
+        }
+    })
+    .catch((error) => {console.log(error)});
+}
+
+
 
 exports.logout = (request, response, next) => {
     request.session.destroy(() => {

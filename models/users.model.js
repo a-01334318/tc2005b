@@ -14,11 +14,19 @@ module.exports = class User {
         return bcrypt.hash(this.password, 12)
         .then((encryptedPassword) => {
             return db.execute(`
-                INSERT INTO usuarios (username, password)
+                INSERT INTO users (username, password)
                 VALUES (?, ?)
             `, [this.username, encryptedPassword]);
         })
         .catch((error) => { console.log(error) });
+    }
+
+    static fetchOne(username) {
+        return db.execute(`
+            SELECT * 
+            FROM users
+            WHERE username = ?
+        `, [username]);
     }
 
 }
