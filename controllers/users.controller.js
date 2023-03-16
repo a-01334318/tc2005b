@@ -2,7 +2,10 @@ const User = require('../models/users.model');
 const bcrypt = require('bcryptjs');
 
 exports.get_signup = (request, response, next) => {
-    response.render('signup');
+    response.render('signup', {
+        isLoggedIn: request.session.isLoggedIn || false,
+        username: request.session.username || '',
+    });
 };
 
 exports.post_signup = (request, response, next) => {
@@ -33,6 +36,8 @@ exports.get_login = (request, response, next) => {
 
     response.render('login', {
         alert: alert,
+        isLoggedIn: request.session.isLoggedIn || false,
+        username: request.session.username || '',
     });
 };
 

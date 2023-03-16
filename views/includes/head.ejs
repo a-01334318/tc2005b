@@ -76,9 +76,14 @@
                   <a class="nav-link fw-bold py-1 px-0" aria-current="page" href="/">About me</a>
                   <a class="nav-link fw-bold py-1 px-0" href="/contact">Contacto</a>
                   <a class="nav-link fw-bold py-1 px-0" href="/faq">FAQ</a>
-                  <a class="btn btn-primary" href="/signup" role="button">Registrarse</a>
-                  <a class="btn btn-success" href="/login" role="button">Registrarse</a>
-                  <a class="btn btn-danger" href="/logout" role="button">Salir</a>
+                  <% if(!isLoggedIn) { %> 
+                    <a class="btn btn-primary" href="/signup" role="button">Registrarse</a>
+                    <a class="btn btn-success" href="/login" role="button">Entrar</a>
+                  <% } %>
+                  <% if(isLoggedIn) { %> 
+                    <span class="navbar-item">Hola <%= nombre %>  | </span>
+                    <a class="btn btn-danger" href="/logout" role="button">Salir</a>
+                  <% } %>
                 </nav>
               </div>
             </header>

@@ -6,7 +6,10 @@ exports.get_index = (request, response, next) => {
 };
 
 exports.get_contact = (request, response, next) => {
-    response.render('contact');
+    response.render('contact', {
+        isLoggedIn: request.session.isLoggedIn || false,
+        username: request.session.username || '',
+    });
 };
 
 exports.post_contact = (request, response, next) => {
@@ -43,6 +46,8 @@ exports.get_list = (request, response, next) => {
         response.render('list', { 
             contacts: rows,
             lastContact: request.session.lastContact || '',
+            isLoggedIn: request.session.isLoggedIn || false,
+            username: request.session.username || '',
         });
     })
     .catch(error => {
