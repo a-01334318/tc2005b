@@ -1,6 +1,9 @@
 <%- include('includes/head.ejs') %>
     
     <main class="px-3">
+
+        <h1 class="title">Registrarse</h1>
+        <br><br>
         <form action="/users/signup" method="POST">
             <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
             <div class="form-group">
