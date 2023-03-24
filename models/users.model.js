@@ -5,7 +5,7 @@ module.exports = class User {
 
     //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
     constructor(newUser) {
-        this.username = newUser.name || 'John Doe';
+        this.username = newUser.username || 'John Doe';
         this.password = newUser.password || '1234';
     }
 
