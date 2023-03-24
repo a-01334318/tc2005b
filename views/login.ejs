@@ -10,7 +10,7 @@
             </div>
         <% } %>
         
-        <form action="/login" method="POST">
+        <form action="/users/login" method="POST">
             <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
             <div class="form-group">
                 <label for="inputUsername">Username</label>
