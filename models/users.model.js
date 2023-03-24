@@ -13,6 +13,7 @@ module.exports = class User {
     save() {
         return bcrypt.hash(this.password, 12)
         .then((encryptedPassword) => {
+            this.password = encryptedPassword;
             return db.execute(`
                 INSERT INTO users (username, password)
                 VALUES (?, ?)

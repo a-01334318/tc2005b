@@ -47,7 +47,7 @@ exports.post_login = (request, response, next) => {
     User.fetchOne(request.body.inputUsername)
     .then(([rows, fieldData]) => {
         if (rows.length > 0) {
-            bcrypt.compare(request.body.iputPassword, rows[0].password)
+            bcrypt.compare(request.body.inputPassword, rows[0].password)
             .then((doMatch) => {
                 if (doMatch) {
                     request.session.isLoggedIn = true;
