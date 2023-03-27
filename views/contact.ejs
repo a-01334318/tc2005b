@@ -1,22 +1,23 @@
 <%- include('includes/head.ejs') %>
     
   <main class="px-3">
-
-    <h1 class="title">Deja tus datos</h1>
-    <br><br>
-    <form action="/contact" method="POST">
-      <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
-      <div class="form-group">
-        <label for="inputName">Nombre</label>
-        <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Nombre">
-      </div>
-      <div class="form-group">
-        <label for="inputId">Matrícula</label>
-        <input type="text" class="form-control" id="inputId" name="inputId" placeholder="A01330000">
-      </div>
-      <br>
-      <button type="submit" class="btn btn-primary" name="action">Submit</button>
-    </form>
+    <% if(privilegios.indexOf('create') >= 0) { %> 
+      <h1 class="title">Crea un contacto</h1>
+      <br><br>
+      <form action="/contact" method="POST">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+        <div class="form-group">
+          <label for="inputName">Nombre</label>
+          <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Nombre">
+        </div>
+        <div class="form-group">
+          <label for="inputId">Matrícula</label>
+          <input type="text" class="form-control" id="inputId" name="inputId" placeholder="A01330000">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary" name="action">Submit</button>
+      </form>   
+    <% } %>
   </main>
 
 <%- include('includes/foot.ejs') %>

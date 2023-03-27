@@ -53,6 +53,7 @@ exports.get_list = (request, response, next) => {
             lastContact: request.session.lastContact || '',
             isLoggedIn: request.session.isLoggedIn || false,
             username: request.session.username || '',
+            privilegios: request.session.privilegios || [],
         });
     })
     .catch(error => {
