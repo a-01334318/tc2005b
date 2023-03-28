@@ -59,7 +59,7 @@ exports.post_login = (request, response, next) => {
                         const privilegios = [];
 
                         for (let privilegio of consulta_privilegios) {
-                            privilegios.push(privilegio.nombre);
+                            privilegios.push(privilegio.name);
                         }
 
                         console.log(privilegios);
@@ -67,7 +67,7 @@ exports.post_login = (request, response, next) => {
                         request.session.privilegios = privilegios;
 
                         return request.session.save(err => {
-                            response.redirect('/list');
+                            response.redirect('/');
                         });
                     })
                     .catch((error) => {console.log(error)});

@@ -1,33 +1,38 @@
 <%- include('includes/head.ejs') %>
 
     <main>
-        <h1 class="title">Contactos</h1>
-        <br><br>
-        <div class="container">
-            <div class="row row-cols-3">
-        <% if (contacts.length > 0) { %>
-            <% for (let contact of contacts) { %>
+        <div class="container text-align-center">
+            <div class="row">
                 <div class="col">
-                    <div class="card text-dark" style="width: 8rem;">
-                        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Contacto">
-                        <div class="card-body">
-                            <h5 class="card-title"><%= contact.name %></h5>
-                            <p class="card-text"><%= contact.id %></p>
-                        </div>
-                    </div>
+                    <h1 class="title">Contactos</h1>
+                    <br><br>
                 </div>
-            <% } %>
+            </div>
+        <div class="container text-align-center">
+            <div class="row row-cols-3">
+                <% if (contacts.length > 0) { %>
+                    <% for (let contact of contacts) { %>
+                        <div class="col">
+                            <div class="card text-dark" style="width: 8rem;">
+                                <img class="card-img-top" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Contacto">
+                                <div class="card-body">
+                                    <h5 class="card-title"><%= contact.name %></h5>
+                                    <p class="card-text"><%= contact.id %></p>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                <% } else { %>
+                <p>No hay contactos registrados</p> 
+                <% } %>
+                <br><br>
+                <% if (lastContact != '') { %>
+                <div class="alert alert-primary" role="alert">
+                    El último contacto registrado fue: <%= lastContact %>
+                </div>
+                <% } %>
             </div>
         </div>
-        <% } else { %>
-            <p>No hay contactos registrados</p> 
-        <% } %>
-        <br><br>
-        <% if (lastContact != '') { %>
-            <div class="alert alert-primary" role="alert">
-                El último contacto registrado fue: <%= lastContact %>
-            </div>
-        <% } %>
     </main>
 
 <%- include('includes/foot.ejs') %>
