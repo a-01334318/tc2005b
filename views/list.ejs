@@ -33,6 +33,16 @@
                 <% } %>
             </div>
         </div>
+        <% if(privilegios.indexOf('create') >= 0) { %>
+            <div class="container text-align-center">
+                <div class="row">
+                    <div class="col">
+                        <br><br>
+                        <a href="/contact" class="btn btn-primary">Crear contacto</a>
+                    </div>
+                </div>
+            </div>        
+        <% } %>
     </main>
 
 <%- include('includes/foot.ejs') %>
