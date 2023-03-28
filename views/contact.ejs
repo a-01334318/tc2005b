@@ -18,6 +18,9 @@
         <button type="submit" class="btn btn-primary" name="action">Submit</button>
       </form>   
     <% } %>
+    <% else { %>
+      <h1 class="title">No tienes permisos para crear contactos</h1>
+    <% } %>
   </main>
 
 <%- include('includes/foot.ejs') %>
