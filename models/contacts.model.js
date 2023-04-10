@@ -12,15 +12,15 @@ module.exports = class Contact {
     constructor(newContact) {
         this.name = newContact.name || 'Anonymous';
         this.enrollment_id = newContact.enrollment_id || 'a'
-        this.imagen = newContact.imagen || 'default.jpeg';
+        this.imagen = newContact.imagen || 'default.png';
     }
 
     //Este método servirá para guardar de manera persistente el nuevo objeto. 
     save() {
         return db.execute(
             `INSERT INTO contacts(name, enrollment_id)
-            VALUES(?, ?)`,
-            [this.name, this.enrollment_id]
+            VALUES(?, ?, ?)`,
+            [this.name, this.enrollment_id, this.imagen]
         );   
     }
     
