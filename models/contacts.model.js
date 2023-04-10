@@ -18,7 +18,7 @@ module.exports = class Contact {
     //Este método servirá para guardar de manera persistente el nuevo objeto. 
     save() {
         return db.execute(
-            `INSERT INTO contacts(name, enrollment_id)
+            `INSERT INTO contacts(name, enrollment_id, imagen)
             VALUES(?, ?, ?)`,
             [this.name, this.enrollment_id, this.imagen]
         );   
