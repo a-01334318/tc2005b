@@ -12,6 +12,7 @@ module.exports = class Contact {
     constructor(newContact) {
         this.name = newContact.name || 'Anonymous';
         this.enrollment_id = newContact.enrollment_id || 'a'
+        this.imagen = newContact.imagen || 'default.jpeg';
     }
 
     //Este método servirá para guardar de manera persistente el nuevo objeto. 

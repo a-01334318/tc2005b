@@ -3,7 +3,7 @@
   <main class="px-3"> 
       <h1 class="title">Crea un contacto</h1>
       <br><br>
-      <form action="/contact" method="POST">
+      <form action="/contact" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
         <div class="form-group">
           <label for="inputName">Nombre</label>
@@ -12,6 +12,10 @@
         <div class="form-group">
           <label for="inputId">Matrícula</label>
           <input type="text" class="form-control" id="inputId" name="inputId" placeholder="A01330000">
+        </div>
+        <div class="form-group">
+          <label for="imagen" class="form-label">Imagen</label>
+          <input class="form-control" type="file" id="imagen" name="imagen">
         </div>
         <br>
         <button type="submit" class="btn btn-primary" name="action">Submit</button>

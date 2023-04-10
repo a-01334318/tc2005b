@@ -18,9 +18,13 @@ exports.get_contact = (request, response, next) => {
 };
 
 exports.post_contact = (request, response, next) => {
+
+    console.log(request.file);
+
     const newContact = new Contact({
         name: request.body.inputName,
         enrollment_id: request.body.inputId,
+        imagen: request.file.filename,
     });
     newContact.save()
     .then(([rows, fieldData]) => {

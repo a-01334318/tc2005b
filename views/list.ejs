@@ -14,7 +14,7 @@
                     <% for (let contact of contacts) { %>
                         <div class="col">
                             <div class="card text-dark" style="width: 8rem;">
-                                <img class="card-img-top" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Contacto">
+                                <img class="card-img-top" src="/uploads/<%= contact.imagen %>" alt="Contacto">
                                 <div class="card-body">
                                     <h5 class="card-title"><%= contact.name %></h5>
                                     <p class="card-text"><%= contact.id %></p>
