@@ -26,13 +26,20 @@
                 <p>No hay contactos registrados</p> 
                 <% } %>
                 <br><br>
-                <% if (lastContact != '') { %>
-                <div class="alert alert-primary" role="alert">
-                    El último contacto registrado fue: <%= lastContact %>
-                </div>
-                <% } %>
             </div>
         </div>
+        <% if (lastContact != '') { %>
+            <div class="container text-align-center">
+                <div class="row">
+                    <div class="col">
+                        <br><br>
+                        <div class="alert alert-primary" role="alert">
+                            El último contacto registrado fue: <%= lastContact %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
         <% if(privilegios.indexOf('create') >= 0) { %>
             <div class="container text-align-center">
                 <div class="row">
