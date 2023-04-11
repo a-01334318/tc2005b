@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:8889
--- Tiempo de generación: 14-03-2023 a las 16:39:12
+-- Tiempo de generación: 11-04-2023 a las 00:16:14
 -- Versión del servidor: 5.7.39
 -- Versión de PHP: 7.4.33
 
@@ -31,8 +31,17 @@ CREATE TABLE `contacts` (
   `id` int(11) NOT NULL,
   `name` varchar(80) NOT NULL,
   `enrollment_id` varchar(20) NOT NULL,
+  `imagen` varchar(512) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `name`, `enrollment_id`, `imagen`, `created_at`) VALUES
+(1, 'Erik', 'a01334318', 'default.png', '2023-03-14 18:00:11'),
+(6, 'manu', '2', '2023-04-10T23:21:39.140Z-manu.png', '2023-04-10 23:21:39');
 
 --
 -- Índices para tablas volcadas
@@ -53,7 +62,7 @@ ALTER TABLE `contacts`
 -- AUTO_INCREMENT de la tabla `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
