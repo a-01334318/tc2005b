@@ -8,24 +8,33 @@
                     <br><br>
                 </div>
             </div>
-        <div class="container text-align-center">
-            <div class="row row-cols-3">
-                <% if (contacts.length > 0) { %>
-                    <% for (let contact of contacts) { %>
-                        <div class="col">
-                            <div class="card text-dark" style="width: 8rem;">
-                                <img class="card-img-top" src="/uploads/<%= contact.imagen %>" alt="Contacto">
-                                <div class="card-body">
-                                    <h5 class="card-title"><%= contact.name %></h5>
-                                    <p class="card-text"><%= contact.id %></p>
+            <div class="row">
+                <div class="col">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Buscar" name="buscar" id="buscar">
+                    </div>
+                </div>
+            </div>
+        <div id="resultados">
+            <div class="container text-align-center">
+                <div class="row row-cols-3">
+                        <% if (contacts.length > 0) { %>
+                            <% for (let contact of contacts) { %>
+                                <div class="col">
+                                    <div class="card text-dark" style="width: 8rem;">
+                                        <img class="card-img-top" src="/uploads/<%= contact.imagen %>" alt="Contacto">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><%= contact.name %></h5>
+                                            <p class="card-text"><%= contact.id %></p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    <% } %>
-                <% } else { %>
-                <p>No hay contactos registrados</p> 
-                <% } %>
-                <br><br>
+                            <% } %>
+                        <% } else { %>
+                        <p>No hay contactos registrados</p> 
+                        <% } %>
+                    <br><br>
+                </div>
             </div>
         </div>
         <% if (lastContact != '') { %>
@@ -50,6 +59,49 @@
                 </div>
             </div>        
         <% } %>
+
+        <script>
+            document.getElementById("buscar").onkeyup = () => {
+                
+                const valor_busqueda = document.getElementById("buscar").value;
+                //función que manda la petición asíncrona
+                fetch('/buscar/' + valor_busqueda, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                }).then(result => {
+                    return result.json(); //Regresa otra promesa
+                }).then(data => {
+                    //Modificamos el DOM de nuestra página de acuerdo a los datos de la segunda promesa
+                    console.log(data);
+        
+                    let resultados = "";
+        
+                    if (data.contacts.length > 0) { 
+                        resultados += `<div class="col">`;
+                            for (let contact of data.contacts) { 
+                                resultados += `
+                                    <div class="card text-dark" style="width: 8rem;">
+                                        <img class="card-img-top" src="/uploads/${contact.imagen}" alt="Contacto">
+                                        <div class="card-body">
+                                            <h5 class="card-title">${contact.name}</h5>
+                                            <p class="card-text">${contact.id}</p>
+                                        </div>
+                                    </div>`;
+                            } 
+                        resultados += `</div>`;
+                    } else { 
+                        resultados += `<h1>No hay resultados </h1>`;
+                    }    
+        
+                    document.getElementById("resultados").innerHTML = resultados;
+        
+                }).catch(error => {
+                    console.log(error);
+                });
+            }
+        </script>
     </main>
 
 <%- include('includes/foot.ejs') %>

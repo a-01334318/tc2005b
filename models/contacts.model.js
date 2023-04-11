@@ -28,10 +28,23 @@ module.exports = class Contact {
     static fetch(id) {
         let query = `SELECT * FROM contacts`;
         if (id != 0) {
-            query += ' WHERE enrrolment_id = ?'
+            query += ' WHERE enrollment_id = ?'
             return db.execute(query, [id]);
         }
     return db.execute(query);
+    }
+
+    static find(valor_busqueda) {
+        return db.execute(`
+            SELECT * 
+            FROM contacts
+            WHERE name LIKE ? OR enrollment_id LIKE ? OR imagen LIKE ?
+            `, 
+            [
+                '%' + valor_busqueda + '%', '%' + valor_busqueda + '%', 
+                '%' + valor_busqueda + '%'
+            ]
+        );
     }
 }
 

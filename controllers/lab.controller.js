@@ -34,6 +34,17 @@ exports.post_contact = (request, response, next) => {
     .catch(error => console.log(error));
 };
 
+exports.get_buscar = (request, response, next) => {
+
+    Contact.find(request.params.valor_busqueda).then(([rows, fieldData]) => {
+        response.status(200).json({contacts: rows});
+    })
+    .catch((error) => {
+        console.log(error);
+        response.status(500).json({message: "Internal Server Error"});
+    });
+}
+
 exports.get_list = (request, response, next) => {
 
     const cookies = request.get('Cookie') || '';
